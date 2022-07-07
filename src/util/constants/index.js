@@ -1,8 +1,7 @@
 import {ENG} from "./language";
 
-const HOST = '3.84.20.70'
-const BACK_HOST = HOST + ':8080'
-const FRONT_HOST = HOST + ':3000'
+const BACK_HOST = '3.84.20.70:8080'
+const FRONT_HOST = '50.116.20.197:3001'
 
 
 export const BASE_URL = 'http://' + BACK_HOST;
