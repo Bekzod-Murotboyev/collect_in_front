@@ -1,5 +1,6 @@
 import {ENG} from "./language";
 
+// const BACK_HOST = 'localhost:8080'
 const BACK_HOST = '3.84.20.70:8080'
 const FRONT_HOST = '50.116.20.197:3001'
 

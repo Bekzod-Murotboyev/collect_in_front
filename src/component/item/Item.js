@@ -40,7 +40,14 @@ function ItemPage({item, user, putLike, saveComment, getItem, getMe}) {
                 let data = JSON.parse(msg.body)
                 data = data.data
                 if (!comments.filter(it => it.id === data.id)[0]) {
-                    comments.unshift(data)
+                    comments.unshift({
+                        ...data,
+                        user: {
+                            id: user.id,
+                            name: user.name,
+                            image_url: user.image_url
+                        }
+                    })
                     setComments([...comments])
                 }
             }
@@ -200,7 +207,7 @@ function ItemPage({item, user, putLike, saveComment, getItem, getMe}) {
                                             <Grid item xs={12} sm={12}>
                                                 <FormControl fullWidth sx={{m: 1}}>
                                                     <InputLabel htmlFor="outlined-adornment-amount">
-                                                        {lan===ENG?'You may write your comments here':'Здесь вы можете написать свои комментарии'}
+                                                        {lan === ENG ? 'You may write your comments here' : 'Здесь вы можете написать свои комментарии'}
                                                     </InputLabel>
                                                     <OutlinedInput
                                                         id="outlined-adornment-amount"
@@ -233,7 +240,7 @@ function ItemPage({item, user, putLike, saveComment, getItem, getMe}) {
                                                         <Avatar sx={{bgcolor: red[500]}} aria-label="recipe"
                                                                 src={item.user ? item.user.image_url : "/static/images/avatar/1.jpg"}/>
                                                     }
-                                                    title={item.user ? item.user.name : '?'}
+                                                    title={item.user ? item.user.name : ''}
                                                     subheader={new Intl.DateTimeFormat('en-US',
                                                         {year: 'numeric', month: '2-digit', day: '2-digit'})
                                                         .format(item.creation_date)}
